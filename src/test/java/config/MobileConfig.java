@@ -19,7 +19,7 @@ public interface MobileConfig extends Config {
     @DefaultValue("http://hub.browserstack.com/wd/hub")
     String browserstackUrl();
 
-    @Key("appUrl")
+    @Key("app")
     @DefaultValue("bs://b3329f44da140f8046974f5ecdba6c1d950fb9e9")
     String app();
 
