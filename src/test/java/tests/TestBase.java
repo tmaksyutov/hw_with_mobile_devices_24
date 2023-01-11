@@ -23,12 +23,12 @@ public class TestBase {
     public static void setup() {
         addListener("AllureSelenide", new AllureSelenide());
 
-        switch (config.device()) {
-            case "local":
-            case "emulator":
+        switch (config.deviceHost()) {
+            case "real":
+            case "emulation":
                 Configuration.browser = LocalMobileDriver.class.getName();
                 break;
-            case "remote":
+            case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
                 break;
         }
@@ -40,7 +40,7 @@ public class TestBase {
     public void startDriver() {
         open();
 
-        Attach.attachAsText("Режим запуска: ", config.device());
+        Attach.attachAsText("Режим запуска: ", config.deviceHost());
         Attach.attachAsText("Устройство:", config.deviceName());
         Attach.attachAsText("Версия приложения:", config.app());
         Attach.attachAsText("Browserstack URL: ", config.browserstackUrl());
@@ -56,7 +56,7 @@ public class TestBase {
 
         closeWebDriver();
 
-        if (config.device().contains("remote")) {
+        if (config.deviceHost().contains("browserstack")) {
             Attach.video(sessionId);
         }
     }

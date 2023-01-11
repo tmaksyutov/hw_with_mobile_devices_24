@@ -3,16 +3,16 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
-@Config.Sources({"classpath:config/${device}.properties",
+@Config.Sources({"classpath:config/${deviceHost}.properties",
         "classpath:config/credentials.properties"})
 public interface MobileConfig extends Config {
-    @Key("device.name")
+    @Key("deviceName")
     String deviceName();
 
-    @Key("platform.name")
+    @Key("platformName")
     String platformName();
 
-    @Key("platform.version")
+    @Key("platformVersion")
     String platformVersion();
 
     @Key("browserstackUrl")
@@ -23,9 +23,9 @@ public interface MobileConfig extends Config {
     @DefaultValue("bs://b3329f44da140f8046974f5ecdba6c1d950fb9e9")
     String app();
 
-    @Key("device")
-    @DefaultValue("emulator")
-    String device();
+    @Key("deviceHost")
+    @DefaultValue("browserstack")
+    String deviceHost();
 
     String browserstackLogin();
 
